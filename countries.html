@@ -71,7 +71,6 @@
         .country-name img{
             width: 100%;
             border-radius: 2px 2px 0px 0px;
-
         }
         .country-name button{
             height: 17px;
@@ -1147,7 +1146,18 @@
                 })
             }
         }
-
+        countriesData.sort((a,b)=>{
+            if (a.capital == null || b.capital == null){
+                return 0;
+            }
+            if(a.capital.toLocaleLowerCase() > b.capital.toLocaleLowerCase()){
+                return 1;
+            }
+            if(a.capital.toLocaleLowerCase() < b.capital.toLocaleLowerCase()){
+                return -1;
+            }
+            return 0;
+        })
         display(countriesData);
         function filterOutTheCountries(keyWord){
         countriesData = mainData.filter((country) => country.region == keyWord);
